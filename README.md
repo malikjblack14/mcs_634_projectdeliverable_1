@@ -1,15 +1,17 @@
-# MCS 634: Project Deliverable 1 - Data Collection, Cleaning, and Exploration
+# Lab 1: Data Visualization, Data Preprocessing, and Statistical Analysis
 
-## Dataset Summary
-This project analyzes NBA player performance statistics using data collected from the 2025-2026 basketball season. The raw dataset (`nba_player_stats.csv`) tracks key metrics across multiple athletes, including points scored, assists, rebounds, minutes played, and shooting percentages. The objective of this deliverable is to establish a solid foundation for predictive data mining and big data analytics by compiling, formatting, and analyzing this performance data.
+## Purpose of Lab Work
+The purpose of this lab is to perform initial data exploration, cleaning, preprocessing, and visualization on an Electric Vehicle (EV) Population dataset. This work establishes a baseline understanding of EV distributions, manufacturer dominance, and vehicle ranges to prepare the dataset for deeper data mining tasks.
 
-## Data Cleaning & Exploration Steps
-To ensure data integrity for subsequent data mining phases, the following structured preprocessing pipeline was executed inside `deliverable1.ipynb`:
-* **Handling Missing Values:** Inspected the dataset for null values, duplicates, and structurally inconsistent records, applying appropriate imputation strategies where needed.
-* **Feature Formatting:** Standardized numerical columns and categorical variables to maintain uniformity across player rows.
-* **Exporting Cleaned Data:** Saved the processed results into a separate file (`nba_player_stats_cleaned.csv`) to keep raw and clean assets separate.
-* **Data Exploration & Visualizations:** Conducted exploratory data analysis (EDA) using Matplotlib/Seaborn to generate clear, well-labeled charts (such as scoring distributions) to isolate key performance trends.
+## Key Insights from Visualizations
+*   **Top 10 Electric Vehicle Makes (Bar Chart):** The visualization clearly demonstrates that Tesla heavily dominates the dataset with over 120,000 vehicles. Other manufacturers like Chevrolet, Nissan, and Ford follow but hold significantly smaller portions of the market share.
+*   **Distribution of Electric Range (Histogram):** The data reveals a massive cluster of vehicles with a shorter range (0–50 miles), which represents plug-in hybrid models or early-generation EVs. A second, smaller distribution peak occurs around 200–250 miles, capturing modern, long-range battery electric vehicles.
 
-## Challenges Encountered & Resolutions
-* **Challenge:** Managing inconsistent data formatting and structural null values within specific advanced metrics rows, which threatened to skew the overall exploratory visualizations.
-* **Resolution:** Implemented localized filtering and data-type normalization scripts in Python to drop or safely impute corrupted fields, isolating the anomalies without compromising the broader dataset.
+## Key Insights from Statistical Analysis
+*   **Descriptive Statistics:** The sampled dataset contains 24,401 vehicles with an average model year of ~2023. The average electric range is approximately 7.89 miles, with a high variance ($250.75$), reflecting the massive proportion of newer models that register a $0.0$ baseline range calculation or plug-in hybrids compared to high-range exceptions.
+*   **Correlation Matrix:** There is a moderate negative correlation ($-0.466$) between `Model Year` and `Electric Range`. This indicates that as the model year increases (newer vehicles), the reported battery range value in this specific attribute decreases, likely due to a shift in how newer model data forms or a prevalence of newer hybrid models with smaller baseline standard electric-only ranges.
+
+## Challenges Faced & Decisions Made
+*   **Environment Configuration:** Encountered initial `ModuleNotFoundError` issues for `ipykernel`, `pandas`, `matplotlib`, and `seaborn`. This was resolved by dynamically installing the required packages directly within the Jupyter environment using `pip`.
+*   **System Storage Limitations:** Ran into a critical `OSError: [Errno 28] No space left on device` during package installations due to a full hard drive. To resolve this, large cached installation files were cleared and purged from the system Trash to free up the necessary environment deployment space.
+*   **File Path Calibration:** Dealt with a `FileNotFoundError` when loading the dataset. The file path was updated from a local root assumption to accurately reference the `Downloads/` directory where the source data was located.s
